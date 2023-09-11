@@ -28,6 +28,12 @@ func FromSearchClient(client client.SearchClient) NewSearcher {
 			return nil, err
 		}
 
+		// TODO should the Plan be parsed differently? Right now by default we
+		// will set a timeout and a limit if unspecified by the input query.
+		//
+		// Additionally by default we try use the index and do things like a
+		// RepoSearchJob, ReposComputeExcluded, etc. The shape of our job
+		// should be quite different in this use case.
 		planJob, err := jobutil.NewPlanJob(inputs, inputs.Plan)
 		if err != nil {
 			return nil, err

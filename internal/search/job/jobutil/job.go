@@ -74,6 +74,9 @@ func NewBasicJob(inputs *search.Inputs, b query.Basic) (job.Job, error) {
 		children = append(children, j)
 	}
 
+	// TODO(keegan) work out what is happening here so we can do exhaustive
+	// search v0
+
 	// Modify the input query if the user specified `file:contains.content()`
 	fileContainsPatterns := b.FileContainsContent()
 	originalQuery := b
